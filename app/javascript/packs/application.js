@@ -14,6 +14,24 @@ window.Rails = Rails
 import 'bootstrap'
 import 'data-confirm-modal'
 
+// tailor_made
+import jquery from 'jquery'
+import Chartkick from 'chartkick'
+import Chart from 'chart.js'
+import 'flatpickr'
+import rangePlugin from 'flatpickr/dist/plugins/rangePlugin'
+import "flatpickr/dist/flatpickr.css";
+import 'selectize'
+import "selectize/dist/css/selectize.css";
+import "selectize/dist/css/selectize.bootstrap3.css";
+
+Chartkick.addAdapter(Chart)
+
+window.Chartkick = Chartkick
+window.rangePlugin = rangePlugin
+window.jquery = jquery
+window.$ = jquery
+
 $(document).on("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
