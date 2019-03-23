@@ -3,16 +3,21 @@ module TailorMade
     # creates attr_accessors for dimensions, measures and filters
     include TailorMade::Methods
 
+    dimension :movie_id
+    datetime_dimension :rated_at
+
+    measure :average_rating, formula: "AVG(rating)"
+
     def default_dimensions
-      fail(NotImplementedError)
+      [:movie_id]
     end
 
     def default_measures
-      fail(NotImplementedError)
+      [:average_rating]
     end
 
     def from
-      fail(NotImplementedError)
+      Movies::Rating.all
     end
   end
 end

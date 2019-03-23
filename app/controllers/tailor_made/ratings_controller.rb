@@ -16,7 +16,7 @@ module TailorMade
 
     def query_params
       return {} if params[:q].nil?
-      params[:q].permit(TailorMade::Ahoy::VisitQuery.permitted_attributes)
+      params[:q].permit(TailorMade::RatingQuery.permitted_attributes)
     end
   end
 end

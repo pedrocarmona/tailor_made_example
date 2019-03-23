@@ -22,8 +22,12 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: tailor_made_example_development
+  primary:
+    <<: *default
+    database: tailor_made_example_development
+  movies:
+    <<: *default
+    url: <%= ENV.fetch("MOVIES_DATABASE_URL") %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -56,8 +60,14 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: tailor_made_example_test
+  primary:
+    <<: *default
+    database: tailor_made_example_test
+
+  movies:
+    <<: *default
+    url: tailor_made_example_movies_test
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,7 +89,12 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: tailor_made_example_production
-  username: tailor_made_example
-  password: <%= ENV['TAILOR_MADE_EXAMPLE_DATABASE_PASSWORD'] %>
+  primary:
+    <<: *default
+    database: tailor_made_example_production
+    username: tailor_made_example
+    password: <%= ENV['TAILOR_MADE_EXAMPLE_DATABASE_PASSWORD'] %>
+
+  movies:
+    <<: *default
+    url: <%= ENV.fetch("MOVIES_DATABASE_URL") %>

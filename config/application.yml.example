@@ -1,3 +1,3 @@
 development:
-  BLAZER_DATABASE_URL: postgres://localhost/movielens
+  MOVIES_DATABASE_URL: postgres://localhost/movielens
   SECRET_KEY_BASE: 6426c3992e7ab7085c8acec5d2384de63d2d595fc65b8e1f2f415ce44c53f1b26e19dc8995e442470e49dc7ac80d1601297dac1ba988a4a708223e98de3806bb
