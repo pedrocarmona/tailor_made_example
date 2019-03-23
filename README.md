@@ -27,12 +27,41 @@ namespace :tailor_made do
 end
 ```
 
-Add pagy in app/helpers/application_helper.rb
-```ruby
-module ApplicationHelper
-  include Pagy::Frontend
-```
+Adjust `/app/queries/tailor_made/rating_query.rb`
 
+```ruby
+
+module TailorMade
+  class RatingQuery < TailorMade::Query
+    # creates attr_accessors for dimensions, measures and filters
+    include TailorMade::Methods
+
+    dimension :movie_id
+    datetime_dimension :rated_at
+
+    measure :average_rating, formula: "AVG(rating)"
+    measure :rating_count, formula: "COUNT(rating)"
+
+    def default_dimensions
+      [:rated_at_week]
+    end
+
+    def default_measures
+      [:rating_count, :average_rating]
+    end
+
+    def initialize(attributes={})
+      super
+      @chart ||= :line_chart
+    end
+
+    def from
+      Movies::Rating.all
+    end
+  end
+end
+
+```
 ## Database
 
 Same as in [blazer-dev](https://github.com/ankane/blazer-dev/blob/master/README.md)
