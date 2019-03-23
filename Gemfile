@@ -74,3 +74,4 @@ gem 'whenever', require: false
 # BI tools
 
 gem 'blazer'
+gem 'tailor_made', path: '../tailor_made'

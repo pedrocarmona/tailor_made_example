@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   # BI tools
   mount Blazer::Engine, at: "blazer"
 
+  namespace :tailor_made do
+    resources :ratings, only: [:index]
+  end
+
   root to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
