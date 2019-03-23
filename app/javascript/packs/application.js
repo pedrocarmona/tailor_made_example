@@ -26,7 +26,6 @@ import "selectize/dist/css/selectize.css";
 import "selectize/dist/css/selectize.bootstrap3.css";
 
 Chartkick.addAdapter(Chart)
-
 window.Chartkick = Chartkick
 window.rangePlugin = rangePlugin
 window.jquery = jquery
