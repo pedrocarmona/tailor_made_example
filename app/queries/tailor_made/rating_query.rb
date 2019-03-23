@@ -7,13 +7,19 @@ module TailorMade
     datetime_dimension :rated_at
 
     measure :average_rating, formula: "AVG(rating)"
+    measure :rating_count, formula: "COUNT(rating)"
 
     def default_dimensions
-      [:movie_id]
+      [:rated_at_week]
     end
 
     def default_measures
-      [:average_rating]
+      [:rating_count, :average_rating]
+    end
+
+    def initialize(attributes={})
+      super
+      @chart ||= :line_chart
     end
 
     def from

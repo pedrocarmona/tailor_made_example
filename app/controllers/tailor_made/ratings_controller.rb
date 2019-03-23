@@ -11,7 +11,7 @@ module TailorMade
     private
 
     def set_query
-      @query = RatingQuery.new(query_params[:rating_query])
+      @query = RatingQuery.new(query_params)
     end
 
     def query_params
