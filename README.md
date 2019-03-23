@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Build from scratch
 
-Things you may want to cover:
+1. Install rails 6.
 
-* Ruby version
+2. Generate application
 
-* System dependencies
+```
+  $ rails new tailor_made_example -d postgresql -m https://raw.githubusercontent.com/excid3/jumpstart/master/template.rb
+```
 
-* Configuration
+3. Follow blazer gems steps
 
-* Database creation
+4. Add tailor_made
 
-* Database initialization
+Follow tailor_made Installation steps with webpacker.
 
-* How to run the test suite
+```
+  $ bin/rails g tailor_made:dashboard Rating
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Add to the routes file:
+```ruby
+namespace :tailor_made do
+  resources :ratings, only: [:index]
+end
+```
 
-* Deployment instructions
+Add pagy in app/helpers/application_helper.rb
+```ruby
+module ApplicationHelper
+  include Pagy::Frontend
+```
 
-* ...
+## Database
+
+Same as in [blazer-dev](https://github.com/ankane/blazer-dev/blob/master/README.md)
